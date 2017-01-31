@@ -1,3 +1,8 @@
 #! /bin/bash
 
-for ID in cut -f 1 $1| uniq
+tail -n +2 $1 | cut -f 1 |uniq > UltBabSearchHolderDoc.txt
+
+while read ID 
+	do printf "Individual: $ID: Times sampled: "	
+	tail -n +2 $1| grep -wcE "^$ID"
+done < UltBabSearchHolderDoc.txt
